@@ -1,6 +1,9 @@
 # Flask secret key
 SECRET_KEY = 'b125de2b2405532549f32d0a1e60a64e'
 
+# Remove or comment out the next line, or fix as below:
+# FLASK_APP='run.py'
+
 # MySQL Config (adjust according to your setup)
 MYSQL_HOST = 'localhost'
 MYSQL_USER = 'your_mysql_user'
