@@ -1,0 +1,9 @@
+Flask
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-WTF
+mysqlclient
+python-dotenv
+face_recognition
+opencv-python
+Pillow
