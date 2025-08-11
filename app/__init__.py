@@ -7,14 +7,14 @@ migrate = Migrate()
 
 def create_app():
     app = Flask(__name__, instance_relative_config=True)
-    # Load config from instance/config.py
     app.config.from_pyfile('config.py', silent=True)
-    
-    # Initialize extensions
+
     db.init_app(app)
     migrate.init_app(app, db)
-    
-    # Register blueprints or routes here (later)
+
+    # ✅ Import your models so Alembic can detect them
+    from . import models  
+
     from . import routes
     app.register_blueprint(routes.bp)
 

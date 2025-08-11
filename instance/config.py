@@ -1,15 +1,16 @@
-# Flask secret key
-SECRET_KEY = 'b125de2b2405532549f32d0a1e60a64e'
+import os
 
-# Remove or comment out the next line, or fix as below:
-# FLASK_APP='run.py'
+class Config:
+    SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret')
 
-# MySQL Config (adjust according to your setup)
-MYSQL_HOST = 'localhost'
-MYSQL_USER = 'your_mysql_user'
-MYSQL_PASSWORD = 'Prious1234'
-MYSQL_DB = 'face_attendance'
+    # Build the MySQL connection string from parts in .env
+    MYSQL_USER = os.getenv('MYSQL_USER', 'root')
+    MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD', '')
+    MYSQL_HOST = os.getenv('MYSQL_HOST', 'localhost')
+    MYSQL_DB = os.getenv('MYSQL_DB', 'attendance_db')
 
-# SQLAlchemy connection string
-SQLALCHEMY_DATABASE_URI = f"mysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}/{MYSQL_DB}"
-SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_DATABASE_URI = (
+        f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}/{MYSQL_DB}"
+    )
+
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
